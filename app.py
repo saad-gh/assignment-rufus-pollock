@@ -13,7 +13,6 @@ def csv_reader(file_obj):
     Read a csv file
     """
     reader = csv.reader(file_obj)
-    #return jsonify(list(zip(*[row for row in reader if row])))
     return jsonify([{"date":row[0],"price":row[1]} for row in reader if row])
 #----------------------------------------------------------------------
 
