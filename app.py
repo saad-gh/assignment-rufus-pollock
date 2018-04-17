@@ -29,3 +29,4 @@ if __name__ == '__main__':
 # https://dzone.com/articles/python-101-reading-and-writing
 # https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 # https://bl.ocks.org/mbostock/3883245
+# http://d3indepth.com/scales/#scales-with-continuous-input-and-continuous-output
