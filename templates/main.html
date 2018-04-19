@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+    <style>
+    .hide{
+        display: none;
+    }
+    </style>
+</head>
 
 <body>
+    <div id="message_wait">
+    <h3>Please wait...</h3>
+    </div>
     <svg width="960" height="500"></svg>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script>
@@ -27,12 +36,18 @@
             .y(function (d) { return y(d.price); });
 
         d3.request("http://localhost:5000/dailyPrices").get(function (response) {
+            document.getElementById("message_wait").className = "hide";
+
             var data = JSON.parse(response.responseText);
             data = data.slice(1);
-            
+            console.log(data[0].date);
+            console.log(data[data.length - 1].date);
+
             data = data.map(function (row) {
                 row.price = +row.price;
-                row.date = new Date(Date.parse(row.date.split(" ")[0]));
+                var strDt = row.date;
+                var arrDt = strDt.split("-").map(function(s){ return +s; });
+                row.date = new Date(arrDt[0],arrDt[1] - 1,arrDt[2] - 1);
                 return row;
             });
 
