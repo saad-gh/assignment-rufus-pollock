@@ -1,0 +1,20 @@
+{
+    "name": "daily-natural-gas-prices",
+    "resources": [
+      {
+        "path": "dailyPrices.csv",
+        "schema": {
+          "fields": [
+            {
+              "name": "dates",
+              "type": "string"
+            },
+            {
+              "name": "prices",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    ]
+  }

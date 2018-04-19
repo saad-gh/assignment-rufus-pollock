@@ -10,6 +10,7 @@ class DailyPrices:
         self.std_strftime = "%Y-%m-%d"
         self.url = "https://www.eia.gov/dnav/ng/hist_xls/RNGWHHDd.xls"
         self.df_fresh_dp = pd.read_excel(self.url, sheet_name = 'Data 1')
+        self.path_dp = "data\\dailyPrices.csv"
 
     def downloadDailyPrices(self):    
 
@@ -28,30 +29,34 @@ class DailyPrices:
         dates[0] = "dates"
         prices[0] = "prices"
 
-        rows = zip(dates,prices)
+        rows = zip(dates,prices)        
         
-        if not os.path.exists("dailyPrices.csv"):
-            with open("dailyPrices.csv", "w",newline='') as dp: 
+        with open(self.path_dp, "w",newline='') as dp: 
                     writer = csv.writer(dp)
                     for row in rows:                                        
                         writer.writerow(row)
         return 1
 
     def updateDailyPrices(self):
+        if os.path.exists(self.path_dp):
+            df_old_dp = pd.read_csv(self.path_dp)
+        else:
+            self.downloadDailyPrices()
+            return 1
 
         dates = self.df_fresh_dp['Back to Contents'].values  # Read dates column
         latest_date = dates[-1].strftime(self.std_strftime)  # Extract latest date and standardize into string format
         prices = self.df_fresh_dp['Data 1: Henry Hub Natural Gas Spot Price (Dollars per Million Btu)'].values  # Read prices column
-        latest_price = prices[-1] # Extract latest price
-        
-        df_old_dp = pd.read_csv("dailyPrices.csv")
+        latest_price = prices[-1] # Extract latest price        
 
         if df_old_dp['dates'].values[-1] == latest_date and df_old_dp['prices'].values[-1] == latest_price:
             return 0
         else:
             latest_row = [latest_date,latest_price]
 
-        with open("dailyPrices.csv", "a",newline='') as dp: 
-                writer = csv.writer(dp)                       
-                writer.writerow(latest_row)
+        
+        with open(self.path_dp, "a",newline='') as dp: 
+            writer = csv.writer(dp)                       
+            writer.writerow(latest_row)
+
         return 1

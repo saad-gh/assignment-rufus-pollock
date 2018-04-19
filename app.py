@@ -25,7 +25,7 @@ def getDailyPrices():
     dp = DailyPrices()
     dp.updateDailyPrices()
 
-    csv_path = "dailyPrices.csv"
+    csv_path = "data\\dailyPrices.csv"
     with open(csv_path, "rt") as f_obj:
         return csv_reader(f_obj)
 
