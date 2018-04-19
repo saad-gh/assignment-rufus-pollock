@@ -7,11 +7,11 @@
           "fields": [
             {
               "name": "dates",
-              "type": "string"
+              "type": "date"
             },
             {
               "name": "prices",
-              "type": "string"
+              "type": "number"
             }
           ]
         }
