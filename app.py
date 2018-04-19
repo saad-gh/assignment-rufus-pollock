@@ -1,4 +1,3 @@
-#!flask/bin/python
 import csv
 from dailyPrices import DailyPrices
 from flask import Flask, jsonify, render_template
