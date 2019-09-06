@@ -1,0 +1,107 @@
+{
+  "name": "henry-hub-natural-gas-prices",
+  "title": "Henry Hub Natural Gas Prices",
+  "homepage": "https://www.eia.gov/naturalgas/",
+  "licenses": [
+    {
+      "path": "https://www.eia.gov/about/copyrights_reuse.php",
+      "title": "Copyrights And Reuse "
+    }
+  ],
+  "sources": [
+    {
+      "title": "Henry Hub Daily Natural Gas Price",
+      "path": "https://www.eia.gov/dnav/ng/hist/rngwhhdD.htm"
+    },
+    {
+      "title": "Henry Hub Montly Natural Gas Price",
+      "path": "https://www.eia.gov/dnav/ng/hist/rngwhhdm.htm"
+    },
+    {
+      "title": "Henry Hub Weekly Natural Gas Price",
+      "path": "https://www.eia.gov/dnav/ng/hist/rngwhhdW.htm"
+    },
+    {
+      "title": "Henry Hub Annual Natural Gas Price",
+      "path": "https://www.eia.gov/dnav/ng/hist/rngwhhdA.htm"
+    }
+  ],
+  "resources": [
+    {
+      "path": "data/daily.csv",
+      "name": "Daily Prices",
+      "mediatype":"text/csv",
+      "format": "csv",
+      "bytes":96342,
+      "schema": {
+        "fields": [
+          {
+            "name": "dates",
+            "type": "string"
+          },
+          {
+            "name": "prices",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/weekly.csv",
+      "name": "Weekly Prices",
+      "format": "csv",
+      "mediatype":"text/csv",
+      "bytes":19964,
+      "schema": {
+        "fields": [
+          {
+            "name": "dates",
+            "type": "string"
+          },
+          {
+            "name": "prices",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/monthly.csv",
+      "name": "Monthly Prices",
+      "format": "csv",
+      "mediatype":"text/csv",
+      "bytes":4599,
+      "schema": {
+        "fields": [
+          {
+            "name": "dates",
+            "type": "string"
+          },
+          {
+            "name": "prices",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/annual.csv",
+      "name": "Annual Prices",
+      "format": "csv",
+      "mediatype":"text/csv",
+      "bytes":385,
+      "schema": {
+        "fields": [
+          {
+            "name": "dates",
+            "type": "string"
+          },
+          {
+            "name": "prices",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
